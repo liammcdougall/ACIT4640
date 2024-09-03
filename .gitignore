@@ -1,0 +1,8 @@
+.obsidian/
+garage/
+.trash/
+.terraform/
+.terraform/
+.terraform.*
+*.tfstate*
+*.pem*
