@@ -22,6 +22,8 @@ The links below specify how to setup WSL and VSCode. The second link is a good t
 1. [WSL Docs](https://learn.microsoft.com/en-us/windows/wsl/)
 1. [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 1. [WSL File storage and performance across file systems](https://learn.microsoft.com/en-us/windows/wsl/filesystems#file-storage-and-performance-across-file-systems)
+1.  [VSCode and WSL](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode)
+
 
 ## Optional: Hyper-v
 
