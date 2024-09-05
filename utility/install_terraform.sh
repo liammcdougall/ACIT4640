@@ -1,4 +1,4 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 
 # Install Terraform under Debian based Linux distributions like Ubuntu
 # Update packagages
