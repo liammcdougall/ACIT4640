@@ -12,7 +12,13 @@ Using any combination of `ssh-keygen`and `awscli` commands, create an SSH key pa
 
 # Task 2: Create Basic Infrastructure with Terraform
 
+
 Using Terraform you will be provisioning the resources to host a chat application.
+
+Create a diretory `lab02` and create the following files:
+
+- `main.tf` (root module for terraform)
+
 The application is comprised of a web server (lab02_web_w1)
 that also acts as a reverse proxy, and a backend chat server (lab02_backend_b1).
 
