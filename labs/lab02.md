@@ -44,9 +44,11 @@ It will listen on port 80 .
     - allows all traffic out to the internet.
     - allow all traffic out to VPC
 - An EC2 instance `lab02_web_w1`\
+  - Instance Type `t2.micro`
   - Assign Public IP
   - intended to act as a web and reverse proxy server
   - connected to the `lab02_sn_public` subnet.
+  - AMI: Any Ubuntu 22.04 or Later AMI
   - Tags
     - `Name`: `lab02_web_w01`
     - `Server_Role`: `web`
@@ -54,11 +56,12 @@ It will listen on port 80 .
 - An EC2 instance `lab02_backend_b1`
   - intended to act as chat backend server
   - connected to the `lab02_sn_private` subnet.
+  - Instance Type `t2.micro`
+  - AMI: Any Ubuntu 22.04 or Later AMI
   - Tags
     - `Name`: `lab02_backend_b1`
     - `Server_Role`: `backend`
     - `Project`: `lab02 `
-    - Instance Type `t2.micro`
 - A AWS key pair `acit_4640_lab02_key`
 
 
