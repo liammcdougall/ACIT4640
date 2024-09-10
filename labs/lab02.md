@@ -1,6 +1,6 @@
 # Lab 02 
 
-# Task 2: Create SSH Key Pair and Import Public Key to AWS
+# Task 1: Create SSH Key Pair and Import Public Key to AWS
 
 Using any combination of `ssh-keygen`and `awscli` commands, create an SSH key pair and upload the public key to AWS.
 
@@ -10,7 +10,7 @@ Using any combination of `ssh-keygen`and `awscli` commands, create an SSH key pa
 - Passphrase: none
 - Key Format: `pem`
 
-# Task 3: Create Basic Infrastructure with Terraform
+# Task 2: Create Basic Infrastructure with Terraform
 
 Using Terraform you will be provisioning the resources to host a chat application.
 The application is comprised of a web server (lab02_web_w1)
@@ -58,10 +58,11 @@ It will listen on port 80 .
     - `Name`: `lab02_backend_b1`
     - `Server_Role`: `backend`
     - `Project`: `lab02 `
+    - Instance Type `t2.micro`
 - A AWS key pair `acit_4640_lab02_key`
 
 
-# Task 4: Verify Infrastructure 
+# Task 3: Verify Infrastructure 
 Demonstrate that you can connect to the web server and the backend server from your local machine using ssh.
 
 Use `nmap` to verify that the both servers are accessible from the correct ports.
