@@ -37,7 +37,7 @@ It will listen on port 80 .
 - Route Table: `lab02_rt`
 - Subnets:
   - `lab02_sn_public`
-  - `exam_s03_sn_private`
+  - `lab02_sn_private`
 - Security Groups:
   - `lab02_public`
     - allows both Web and SSH traffic in from the internet.
@@ -56,7 +56,7 @@ It will listen on port 80 .
   - connected to the `lab02_sn_public` subnet.
   - AMI: Any Ubuntu 22.04 or Later AMI
   - Tags
-    - `Name`: `lab02_web_w01`
+    - `Name`: `lab02_web_w1`
     - `Server_Role`: `web`
     - `Project`: `lab02 `
 - An EC2 instance `lab02_backend_b1`
@@ -74,4 +74,10 @@ It will listen on port 80 .
 # Task 3: Verify Infrastructure 
 Demonstrate that you can connect to the web server and the backend server from your local machine using ssh.
 
+`ssh -i acit_4640_lab02_key.pem ubuntu@${server_public_dns} -o "StrictHostKeyChecking=no,UserKnownHostsFile=/dev/null"`
+
 Use `nmap` to verify that the both servers are accessible from the correct ports.
+
+```bash
+nmap -Pn -p 22,80 ${server_public_dns}
+```
