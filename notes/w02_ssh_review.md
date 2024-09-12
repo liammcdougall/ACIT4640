@@ -155,6 +155,7 @@ appear instead.)
    --key-type ed25519 \
    --key-format pem \
    --tag-specifications 'ResourceType=key-pair,Tags=[{Key=project,Value=demo}]' \
+   --output text \
    --query "KeyMaterial" > demo_key.pem
    ```
 
