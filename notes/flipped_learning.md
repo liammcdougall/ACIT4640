@@ -43,7 +43,7 @@ In preparation for the lab, please review the following videos:
 1. [Terraform Workflow](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_01_07/)
 1. [Formatting Terraform Code](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_03/)
 1. [Initializing the Working Directory](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_04/)
-1. [Validating Terraform Code]9https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_05/)
+1. [Validating Terraform Code](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_05/)
 1. [Viewing the Terraform Plan](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_06/)
 1. [Appplying the Infrastrucure](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_07/)
 1. [Terraform State File](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_08/)
