@@ -2,8 +2,8 @@
 
 ## Weekly Notes
 
-[Week 1](notes/w01.md)
-[Week 2](notes/w02.md)
+1. [Week 1](notes/w01.md)
+1. [Week 2](notes/w02.md)
 
 ## Flipped Learning
 
