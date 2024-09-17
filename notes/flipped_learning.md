@@ -55,4 +55,8 @@ In preparation for the lab, please review the following videos:
 
 ### Terraform State Overview
 1. [Terraform State](https://developer.hashicorp.com/terraform/language/state)
-1. [Terraform State Cheat Sheet](https://www.terraform.io/docs/language/state/sensitive-data.html)
+1. [Terraform State Cheat Sheet](attachments/terraform-state-cheat-sheet.pdf)
+1. [Terraform Inspecting State: List](https://developer.hashicorp.com/terraform/cli/commands/state/list)
+1. [Terraform Inspecting State: Show](https://developer.hashicorp.com/terraform/cli/commands/state/show)
+1. [Terraform State: Import](https://developer.hashicorp.com/terraform/language/import)
+1. [Terraform Importing State: Generating Configuration](https://developer.hashicorp.com/terraform/language/import/generating-configuration)
