@@ -51,3 +51,8 @@ In preparation for the lab, please review the following videos:
 1. [Terraform Variables: Deploying a Configurable Web Server](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch02.html#idm46165915172384)
 1. [Terraform Variables: Overview](https://developer.hashicorp.com/terraform/language/values) - including `Input Variables` and `Output Values`, and `Local Values`
 
+## Week 03
+
+### Terraform State Overview
+1. [Terraform State](https://developer.hashicorp.com/terraform/language/state)
+1. [Terraform State Cheat Sheet](https://www.terraform.io/docs/language/state/sensitive-data.html)
