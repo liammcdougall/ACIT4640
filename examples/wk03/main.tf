@@ -80,7 +80,6 @@ resource "aws_vpc_security_group_egress_rule" "main" {
   tags = {
     Name = "${var.project_name}_main_egress_rule"
   }
-
 }
 
 resource "aws_vpc_security_group_ingress_rule" "ssh" {
@@ -110,18 +109,11 @@ resource "aws_vpc_security_group_ingress_rule" "http" {
 }
 
 # -----------------------------------------------------------------------------
-# Setup ssh keys 
+# Setup ssh key 
 # -----------------------------------------------------------------------------
-
 resource "tls_private_key" "main" {
   # Reference: https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key
   algorithm = "ED25519"
-}
-
-resource "aws_key_pair" "main" {
-  # Reference: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair
-  key_name   = "${var.project_name}_key"
-  public_key = tls_private_key.main.public_key_openssh
 
   # Generate key-pair files in current directory when creating the key pair
   # For use when SSHing to the EC2 instances
@@ -130,9 +122,9 @@ resource "aws_key_pair" "main" {
     # Tutorial: https://spacelift.io/blog/terraform-provisioners
     # Using a terraform variable in shell https://stackoverflow.com/questions/71178041/how-to-insert-terraform-variable-in-shell-script
     command = <<DELIM
-      echo '${tls_private_key.main.private_key_openssh}' > '${self.key_name}.pem'
-      echo '${tls_private_key.main.public_key_openssh}' > '${self.key_name}.pub'
-      chmod 400 ./'${self.key_name}.pem'
+      echo '${tls_private_key.main.private_key_openssh}' > '${var.ssh_key_name}.pem'
+      echo '${tls_private_key.main.public_key_openssh}' > '${var.ssh_key_name}.pub'
+      chmod 400 ./'${var.ssh_key_name}.pem'
     DELIM
 
     when = create
@@ -146,7 +138,7 @@ resource "terraform_data" "delete_key_pair" {
   # Reference: https://developer.hashicorp.com/terraform/language/resources/terraform-data
   # Input stores value that is accessed in the provisioner block as output
   input = {
-    key_name = aws_key_pair.main.key_name
+    key_name = var.ssh_key_name
   }
   # Delete the locally created key files on destroy
   provisioner "local-exec" {
@@ -155,6 +147,14 @@ resource "terraform_data" "delete_key_pair" {
     when    = destroy
   }
 }
+
+# Sync SSH public key with AWS
+resource "aws_key_pair" "main" {
+  # Reference: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair
+  key_name   = "${var.project_name}_key"
+  public_key = tls_private_key.main.public_key_openssh
+}
+
 
 # -----------------------------------------------------------------------------
 # Create and run the EC2 instance 
@@ -174,10 +174,11 @@ resource "aws_instance" "main" {
 
 }
 
-# Generate a shell script to set variables for the aws resources to # be used in the  in AWS CLI Operations
+# Generate a shell script to set variables for the aws resources to 
+# used to create resources using the AWS CLI 
 resource "local_file" "aws_setup" {
   # https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file
-  content = <<-EOT
+  content  = <<-EOT
   PROJECT="${var.project_name}"
   AMI="${var.ami_id}"
   VPC="${aws_vpc.main.id}"
