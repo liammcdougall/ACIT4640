@@ -1,5 +1,7 @@
 # Flipped Learning Resources
+
 ## Week 01
+
 ### AWS CLI v2
 
 Please review the basic operations of the AWS CLI:
@@ -49,14 +51,26 @@ In preparation for the lab, please review the following videos:
 1. [Terraform State File](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_08/)
 1. [Destroying the Infrastructure](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_08/)
 1. [Terraform Variables: Deploying a Configurable Web Server](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch02.html#idm46165915172384)
-1. [Terraform Variables: Overview](https://developer.hashicorp.com/terraform/language/values) - including `Input Variables` and `Output Values`, and `Local Values`
+1. [Terraform Variables: Overview](https://developer.hashicorp.com/terraform/language/values) -
+   including `Input Variables` and `Output Values`, and `Local Values`
 
 ## Week 03
 
 ### Terraform State Overview
+
 1. [Terraform State](https://developer.hashicorp.com/terraform/language/state)
 1. [Terraform State Cheat Sheet](attachments/terraform-state-cheat-sheet.pdf)
 1. [Terraform Inspecting State: List](https://developer.hashicorp.com/terraform/cli/commands/state/list)
 1. [Terraform Inspecting State: Show](https://developer.hashicorp.com/terraform/cli/commands/state/show)
 1. [Terraform State: Import](https://developer.hashicorp.com/terraform/language/import)
 1. [Terraform Importing State: Generating Configuration](https://developer.hashicorp.com/terraform/language/import/generating-configuration)
+1. [Importing Existing Infrastructure into Terraform](https://spacelift.io/blog/importing-exisiting-infrastructure-into-terraform)
+
+## Week 04
+
+### Introduction to Ansible
+
+1. [Introduction to Ansible](https://learning.oreilly.com/videos/ansible-and-ansible-playbooks/9781835084182/9781835084182-video1_1/)
+1. [How Ansible Works](https://learning.oreilly.com/videos/ansible-and-ansible-playbooks/9781835084182/9781835084182-video1_3/)
+1. [Ch 1. Introduction, Ansible Up and Running 3rd](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch01.html)
+1. [Ch 3. Playbooks: A beginning, Ansible Up and Running 3rd](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch03.html)
