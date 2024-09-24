@@ -215,6 +215,7 @@ function demo() {
   terraform state list
   echo "***********************************************************************"
 }
+# Uncomment the conditional statement below if you source the functions outside of the debugger
 #if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   # Run the demo - you can uncomment the conditional statement if running outside of the debugger.
   demo
