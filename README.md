@@ -6,6 +6,7 @@
 1. [Week 2](notes/w02.md)
 1. [Week 3](notes/w03.md)
 1. [Week 4](notes/w04.md)
+1. [Week 5](notes/w05_ansible.md)
 
 ## Flipped Learning
 

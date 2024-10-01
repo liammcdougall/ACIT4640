@@ -74,3 +74,21 @@ In preparation for the lab, please review the following videos:
 1. [How Ansible Works](https://learning.oreilly.com/videos/ansible-and-ansible-playbooks/9781835084182/9781835084182-video1_3/)
 1. [Ch 1. Introduction, Ansible Up and Running 3rd](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch01.html)
 1. [Ch 3. Playbooks: A beginning, Ansible Up and Running 3rd](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch03.html)
+
+
+## Week 05
+
+### Ansible: Inventory, Facts, and Variables
+1. [Ch 4 Ansible Inventory Ansible: Up and Running](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch04.html)
+1. Ansible working with Variables
+  1. [Intro](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_00/)
+  1. [Separating Code from Site Specific Configuration](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_01/)
+  1. [Using Variables in a playbook](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
+  1. [Understanding where to define your variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
+  1. [Using Ansible Facts](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
+  1. [Using `set_fact`](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_05/)
+  1. [Understanding Different Notations for Facts and Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_06/)
+  1. [Using Multi-valued Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_07/)
+  1. [Using Magic Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_08/)
+  1. [Using Register](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_09/)
+1. [Ch 5 Vanriables and Facts: Ansible: Up and Running](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch05.html)

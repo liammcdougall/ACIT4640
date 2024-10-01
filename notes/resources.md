@@ -48,12 +48,47 @@ Most of the class readings will come from the following books.
 
 ## Ansible
 
+### Documentation
 1. [Ansible Documentation Root](https://docs.ansible.com/ansible/latest/)
 1. [How to Navigate Ansible Documentation](https://www.redhat.com/sysadmin/navigate-ansible-documentation)
+
+### Playbook Examples
 1. [Simple Playbook Examples](https://www.middlewareinventory.com/blog/ansible-playbook-example/)
 1. [Full Playbook Examples](https://github.com/ansible/ansible-examples) - These
    are role based that we will cover later in the course.
-1. [Ansible modules](https://docs.ansible.com/ansible/2.9/list_of_all_modules.html).
+
+### Modules 
+1. [Ansible modules](https://docs.ansible.com/ansible/latest/collections/index_module.html).
+
+### Configuration Management Modules References
+
+- Wait till remote is ready: [`wait_for_connection`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/wait_for_connection_module.html)
+- Install packages (General): [`package`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html)
+- Install packages (Ubuntu): [`apt`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html)
+- Manage users: [`user`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html)
+- Manage file and properties/permissions: [`file`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html)
+- Copy to remote: [`copy`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)
+- Template out to remote: [`template`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html)
+- Download a file: [`get_url`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html)
+- Unzip a file: [`unarchive`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html)
+  - Use `remote_src: yes` only if the compressed file is already on the remote target!
+  - Make sure the binaries to uncompress your file are installed (for example `unzip`)
+- Manage systemd units: [`systemd`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html)
+- Manage Python dependencies: [`pip`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pip_module.html)
+- Manage MySQL users: [`mysql_user`](https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_user_module.html)
+- Manage MySQL databases: [`mysql_db`](https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_db_module.html)
+- Get file/filesystem status: [`stat`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/stat_module.html)
+- Print variables / messages: [`debug`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html)
+- Run a shell command (**AS A LAST RESORT!**): [`shell`](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html)
+
+> Make sure you look at the requirements for each module! The MySQL modules will require Python libraries for mysql. You can install them first with `apt`.
+
+### Ansible Logic References
+
+- [`register`](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#registering-variables): saves the output of a module in a variable
+- [`when`](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html): conditionally runs a task
+- [Loops](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html): repeat tasks with different parameters
+- [`become` and `become_user`](https://docs.ansible.com/ansible/latest/user_guide/become.html): run tasks as a different user
 
 ## Additional Resources
 
