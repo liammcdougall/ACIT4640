@@ -451,17 +451,6 @@ resource "local_file" "ansible_cfg" {
   filename = "${path.module}/ansible.cfg"
 }
 
-output "subnets" {
-  description = "A name indexed map of subnet information including id, CIDR, and availability zone"
-  value = { 
-    for subnet in aws_subnet.main: 
-      subnet.tags.Name => {
-        "id" = subnet.id
-        "cidr" = subnet.cidr_block
-      }
-   }
-}
-
 output "ec2_instances" {
   description = "Name indexed Map of EC2 instance information that includes id, public IP, private IP, and DNS name"
   value = {
