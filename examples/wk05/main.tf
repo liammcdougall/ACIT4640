@@ -367,14 +367,14 @@ resource "local_file" "connect_vars" {
   # i.e. the name of instance without the project and role
   # then use it as the bash variable name that is assigned the public dns name 
   content  = <<-EOF
-  private_key_file="${var.ssh_key_name}.pem)"
+  private_key_file="${var.ssh_key_name}.pem"
   ansible_user="ubuntu"
 
   %{for instance in aws_instance.main~}
 ${reverse(split("_", instance.tags.Name))[0]}="${instance.public_dns}"
   %{endfor~}
   EOF
-  filename = abspath("${path.root}/../connect_vars.sh")
+  filename = abspath("${path.root}/connect_vars.sh")
 }
 
 # -----------------------------------------------------------------------------
