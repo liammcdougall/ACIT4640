@@ -432,6 +432,25 @@ resource "local_file" "inventory" {
 
 }
 
+resource "local_file" "ansible_cfg" {
+  # File Reference: https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file
+  # https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+  content = <<-EOF
+  [defaults]
+  inventory = ${path.module}/hosts.yml
+  stdout_callback = debug
+  private_key_file = "${path.module}/${var.ssh_key_name}.pem"
+  remote_user = "ubuntu"
+  remote_tmp = /tmp
+
+  [ssh_connection]
+  host_key_checking = False
+  ssh_common_args = -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+  EOF
+
+  filename = "${path.module}/ansible.cfg"
+}
+
 output "subnets" {
   description = "A name indexed map of subnet information including id, CIDR, and availability zone"
   value = { 
