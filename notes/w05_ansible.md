@@ -149,7 +149,7 @@ latter.
 1. [Full Playbook Examples](https://github.com/ansible/ansible-examples) - These
    are role based that we will cover later in the course.
 
-## Lab Part 1: Installing Ansible
+## To Do: Installing Ansible
 
 You can install Ansible using the supplied script:
 [`install_ansible.sh`](/utility/install_ansible.sh) from within your WSL2
@@ -162,13 +162,3 @@ and install the `ansible` community package.
 
 After you can check that `ansible` was installed with the command
 `ansible --version`
-
-## Lab Part 2: Create playbook: `site.yml` to configure 3 proxy servers and one static web server
-
-The inventory file is given produced by the terraform module in [/examples/wk05](examples/wk05)
-
-
-### Resources
-1. [ Install and Configure Nginx as Service](https://ubuntu.com/tutorials/install-and-configure-nginx#1-overview)
-1. [Confingure Nginx for Static Sites](https://dev.to/karthiknarayan/setting-up-nginx-to-serve-static-content-on-any-linux-based-server-1185)
-1.  [How To Configure Nginx as a Reverse Proxy on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-on-ubuntu-22-04)
