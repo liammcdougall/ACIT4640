@@ -54,7 +54,7 @@ variable "cidr_blocks" {
 }
 
 variable "ssh_key_name" {
-  description = "AWS SSH key name"
+  description = "SSH key name"
   default     = "acit_4640_202430"
   type        = string
 }
@@ -341,21 +341,6 @@ resource "aws_instance" "main" {
 }
 
 ## ----------------------------------------------------------------------------
-## CONFIGURE ANSIBLE
-## Create Ansible variable file to specify the ssh key and user for connecting
-## to the ec2 instances 
-## ----------------------------------------------------------------------------
-resource "local_file" "inventory_vars" {
-  content  = <<-EOF
-  project_${var.project_name}:
-    vars:
-      ansible_ssh_private_key_file: "${path.module}/${var.ssh_key_name}.pem"
-      ansible_user: "ubuntu"
-  EOF
-  filename = abspath("${path.root}/terraform_vars.yml")
-}
-
-## ----------------------------------------------------------------------------
 ## CONFIGURE BASH FILE WITH SSH CONNECTION VARIABLES
 ## Create script file to specify the ssh key and user for connecting
 ## to the ec2 instances, as well as short name assinged the public dns names of
@@ -420,6 +405,7 @@ resource "local_file" "inventory" {
     vars:
       ansible_ssh_private_key_file: "${path.module}/${var.ssh_key_name}.pem"
       ansible_user: ubuntu
+      remote_tmp: /tmp
   web:
     hosts:
       ${local.web_servers}
@@ -439,9 +425,6 @@ resource "local_file" "ansible_cfg" {
   [defaults]
   inventory = ${path.module}/hosts.yml
   stdout_callback = debug
-  private_key_file = "${path.module}/${var.ssh_key_name}.pem"
-  remote_user = "ubuntu"
-  remote_tmp = /tmp
 
   [ssh_connection]
   host_key_checking = False
