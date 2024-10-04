@@ -455,7 +455,7 @@ output "ssh_pub_key_file" {
 
 output "ssh_priv_key_file" {
   description = "Absolute path to the private key file"
-  value = abspath("${var.ssh_key_name}.pub")
+  value = abspath("${var.ssh_key_name}.pem")
 }
 
 output "ssh_key_name" {
