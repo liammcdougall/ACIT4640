@@ -95,7 +95,6 @@ variable "instance_configs" {
     role   = string
     security_group = string
     type   = string
-    private_ip = string
   }))
 }
 
@@ -325,6 +324,7 @@ resource "aws_instance" "main" {
   key_name        = "${var.ssh_key_name}"
   subnet_id       = aws_subnet.main[each.value.subnet].id
   security_groups = [aws_security_group.main[each.value.security_group].id]
+  private_ip      = "${each.value.private_ip}"
 
   tags = {
     Name        = "${var.project_name}_${each.value.role}_${each.key}"
@@ -361,19 +361,89 @@ ${reverse(split("_", instance.tags.Name))[0]}="${instance.public_dns}"
   filename = abspath("${path.root}/connect_vars.sh")
 }
 
+# -----------------------------------------------------------------------------
+# Generate inventory for use Ansible
+# Ansible Inventory: https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+# -----------------------------------------------------------------------------
+# Local varialbles to used to build Ansible inventory file
+
+locals {
+  # String Templates: https://developer.hashicorp.com/terraform/language/expressions/strings#string-templates
+  # Substring: https://developer.hashicorp.com/terraform/language/functions/substr
+  # The projecet name is trimmed from the instance name to get the server alias for the inventory file
+  # this is to make adhoc ansible commands easier to run
+  prefix_length = length(var.project_name) + 1
+
+  # Create a string for each server type that stores the server alias 
+  # and public dns for each server this will be when writing the inventory file
+  web_servers = <<-EOT
+  %{for instance in aws_instance.main~}
+    %{if instance.tags["Role"] == "web"}
+      ${substr(instance.tags["Name"], local.prefix_length, -1)}:
+        ansible_host: ${instance.public_dns}
+    %{endif}
+  %{endfor~}
+  EOT
+
+  backend_servers = <<-EOT
+  %{for instance in aws_instance.main~}
+    %{if instance.tags["Role"] == "backend"}
+      ${substr(instance.tags["Name"], local.prefix_length, -1)}:
+        ansible_host: ${instance.public_dns}
+    %{endif}
+  %{endfor~}
+  EOT
+}
+
+# Create Ansible Inventory file
+# Specify the ssh key and user and the servers for each server type
+resource "local_file" "inventory" {
+  # File Reference: https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file
+  content = <<-EOF
+  all:
+    vars:
+      ansible_ssh_private_key_file: "${path.module}/${var.ssh_key_name}.pem"
+      ansible_user: ubuntu
+      remote_tmp: /tmp
+  web:
+    hosts:
+      ${local.web_servers}
+  backend:
+    hosts:
+      ${local.backend_servers}
+  EOF
+
+  filename = "${path.module}/hosts.yml"
+
+}
+
 # Create Ansible Variables file for all hosts
 # Specify the ssh key and user 
 resource "local_file" "group_all_vars" {
   content = <<-EOF
   ---
-  ansible_ssh_private_key_file: "../terraform/${var.ssh_key_name}.pem"
+  ansible_ssh_private_key_file: "${path.module}/${var.ssh_key_name}.pem"
   ansible_user: ubuntu
   remote_tmp: /tmp
-  ...
   EOF
 
   filename = "${path.module}/../ansible/group_vars/all.yml"
 
+}
+resource "local_file" "ansible_cfg" {
+  # File Reference: https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file
+  # https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+  content = <<-EOF
+  [defaults]
+  inventory = ${path.module}/hosts.yml
+  stdout_callback = debug
+
+  [ssh_connection]
+  host_key_checking = False
+  ssh_common_args = -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+  EOF
+
+  filename = "${path.module}/ansible.cfg"
 }
 
 output "ec2_instances" {
@@ -386,8 +456,14 @@ output "ec2_instances" {
           "private_ip" = instance.private_ip
           "dns_name" = instance.public_dns
           "tags" = instance.tags
+
       }
   }
+}
+
+output "ssh_pub_key_file" {
+  description = "Absolute path to the public key file"
+  value = abspath("${var.ssh_key_name}.pub")
 }
 
 output "ssh_priv_key_file" {
