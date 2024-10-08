@@ -324,7 +324,6 @@ resource "aws_instance" "main" {
   key_name        = "${var.ssh_key_name}"
   subnet_id       = aws_subnet.main[each.value.subnet].id
   security_groups = [aws_security_group.main[each.value.security_group].id]
-  private_ip      = "${each.value.private_ip}"
 
   tags = {
     Name        = "${var.project_name}_${each.value.role}_${each.key}"
