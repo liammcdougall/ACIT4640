@@ -1,0 +1,22 @@
+- name: setup hosts file
+  hosts: Project_demo
+  become: true
+  tasks:
+    # Install network tools for troubleshooting
+    - name: install network tools
+      ansible.builtin.package:
+          update_cache: true
+          name: "{{ item }}"
+          state: latest
+      with_items:
+            - bind9-dnsutils
+            - tcpdump
+            - nmap
+            - netcat-openbsd
+            - curl
+    # Create a hosts file so you can easily reference the IP addresses of your instances
+    # using the inventory hostnames i.e. f1, f2, f3, b1, b2
+    - name: create hosts file
+      ansible.builtin.template:
+        src: hosts.j2
+        dest: /etc/hosts

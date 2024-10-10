@@ -1,0 +1,3 @@
+{% for server in groups['Project_demo'] %}
+{{hostvars[server]['ansible_facts']['default_ipv4']['address']}} {{hostvars[server]['inventory_hostname']}} 
+{% endfor %}

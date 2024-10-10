@@ -1,0 +1,26 @@
+---
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-west-2
+
+# Set individual Variables
+compose:
+  ansible_host: public_dns_name
+
+hostnames:
+  - name: tag:Name
+    separator: ""
+    prefix: ""
+
+# Create groups
+keyed_groups:
+  # add hosts to group for each Project
+  - key: tags.Project
+    prefix: "Project"
+    separator: "_"
+
+  # add hosts to group for each Server-Type
+  - key: tags.Role
+    prefix: "Server_Role"
+    separator: "_"
+...
