@@ -3,10 +3,12 @@ plugin: amazon.aws.aws_ec2
 regions:
   - us-west-2
 
-# Set individual Variables
+# Set Variables
 compose:
+  # Configure ansible to use the public DNS name when connecting to the instances
   ansible_host: public_dns_name
 
+# Set the Inventory Hostname to be the EC2 Tag Name value without any prefix or separator
 hostnames:
   - name: tag:Name
     separator: ""
@@ -14,12 +16,17 @@ hostnames:
 
 # Create groups
 keyed_groups:
-  # add hosts to group for each Project
+  # Create a group for each Name Tag (alternative to setting the hostname above)
+  - key: tags.Name
+    prefix: "Name"
+    separator: "_"
+
+  # Create group for each separate Project Tag
   - key: tags.Project
     prefix: "Project"
     separator: "_"
 
-  # add hosts to group for each Server-Type
+  # Create a group for each separate Role Tag
   - key: tags.Role
     prefix: "Server_Role"
     separator: "_"
