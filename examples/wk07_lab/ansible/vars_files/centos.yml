@@ -1,0 +1,6 @@
+base_packages:
+    - bind-utils
+    - tcpdump
+    - nmap
+    - curl
+nginx_package: nginx

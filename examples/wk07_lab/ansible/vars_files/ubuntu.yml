@@ -1,0 +1,7 @@
+base_packages:
+    - bind9-dnsutils
+    - tcpdump
+    - nmap
+    - netcat-openbsd
+    - curl
+nginx_package: nginx
