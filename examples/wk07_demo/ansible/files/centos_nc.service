@@ -1,0 +1,11 @@
+[Unit]
+Description=netcat service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/nc -l 8023
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+base_packages:
+    - bind-utils
+    - tcpdump
+    - nmap
+    - curl

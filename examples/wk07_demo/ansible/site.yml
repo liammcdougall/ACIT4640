@@ -1,0 +1,95 @@
+- name: get host facts
+  hosts: Project_wk07_demo
+  tags: always
+  tasks:
+    - name: get facts
+      ansible.builtin.setup:
+
+- name: common setup 
+  hosts: Project_wk07_demo
+  tags: base_setup
+  become: true
+  tasks:
+    - name: load per os package names
+      ansible.builtin.include_vars:
+        file: "vars_files/{{ ansible_facts.distribution|lower }}.yml"
+    - name: install network tools
+      ansible.builtin.package:
+          name: "{{ item }}"
+          state: latest
+          update_cache: yes
+      loop: "{{ base_packages }}"
+
+    # Create a hosts file so you can easily reference the IP addresses of your instances
+    - name: create hosts file
+      ansible.builtin.template:
+        src: hosts.j2
+        dest: /etc/hosts
+
+- name: setup chat server centos
+  tags: chat_setup
+  hosts: Project_wk07_demo
+  become: true
+  tasks:
+    - name: configure chat service CentOS
+      when: ansible_facts.distribution == 'CentOS' and ansible_facts.os_family == 'RedHat'
+      block:
+        - name: install nc package centos
+          ansible.builtin.package:
+            name: nc 
+            state: latest
+        - name: copy chat service unit file
+          ansible.builtin.copy:
+            src: centos_nc.service
+            dest: /etc/systemd/system/nc.service
+            owner: root
+            group: root
+            mode: 0644
+      notify: 
+        - reload daemons
+        - restart nc
+  handlers:
+    - name: reload daemons
+      ansible.builtin.systemd:
+        daemon_reload: true
+      become: true
+    - name: restart nc
+      ansible.builtin.service:
+        name: nc
+        state: restarted
+        enabled: true
+      become: true  
+
+
+- name: setup chat server ubuntu
+  hosts: Project_wk07_demo:&Server_Role_role_two
+  become: true
+  tags: chat_setup
+  tasks:
+    - name: setup chat server ubuntu 
+      block:
+        - name: install nc package ubuntu
+          ansible.builtin.package:
+            name: netcat-openbsd
+            state: latest
+        - name: copy chat service unit file
+          ansible.builtin.copy:
+            src: ubuntu_nc.service
+            dest: /etc/systemd/system/nc.service
+            owner: root
+            group: root
+            mode: 0644
+      notify: 
+        - reload daemons
+        - restart nc
+  handlers:
+    - name: reload daemons
+      ansible.builtin.systemd:
+        daemon_reload: true
+      become: true
+    - name: restart nc
+      ansible.builtin.service:
+        name: nc
+        state: restarted
+        enabled: true
+      become: true

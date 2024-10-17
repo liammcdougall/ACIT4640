@@ -1,0 +1,4 @@
+{% for host in groups["Project_wk07_demo"] %}
+{#host has to be accessed via dictionary notation since it is expanded#}
+{{hostvars[host].ansible_facts.default_ipv4.address}} {{hostvars[host].inventory_hostname}} 
+{% endfor %}
