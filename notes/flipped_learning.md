@@ -92,3 +92,28 @@ In preparation for the lab, please review the following videos:
   1. [Using Magic Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_08/)
   1. [Using Register](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_09/)
 1. [Ch 5 Vanriables and Facts: Ansible: Up and Running](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch05.html)
+
+## Week 06
+
+### Redhat CentOS 9 Stream References
+1. [CentOS 9 Stream AMI Images](https://www.centos.org/download/aws-images/)
+1. [Redhat Setting up and configuring NGINX](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/deploying_web_servers_and_reverse_proxies/setting-up-and-configuring-nginx_deploying-web-servers-and-reverse-proxies)
+
+### Ansible Variables and Variable Files
+1. [Ansible Variables](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
+1. [Ansible `include_vars` Module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/include_vars_module.html)
+1. [Load Variable files based on Ansible Facts](https://kirito174.medium.com/load-var-files-based-on-ansible-facts-bed963999332)
+1. [Ansible Facts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html): note `INJECT_FACTS_AS_VARS` setting is turned off for this lab.
+1. [Ansible inject variables as facts](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#inject-facts-as-vars) - turn to `false` so always access via `ansible_facts` dictionary.
+
+### Selecting Hosts for Ansible Plays
+1. [Ansible Host Selection Patterns](https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html)
+1. [Ansible Conditionals](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html)
+
+### Controlling the Running of Ansible Tasks and Plays
+1. [Ansible Tags](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html)
+1. [Ansible Loops](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html)
+1. [Ansible Handlers](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html)
+
+### Grouping Ansible Tasks
+1. [Ansible Blocks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html)
