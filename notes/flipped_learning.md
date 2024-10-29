@@ -124,13 +124,25 @@ In preparation for the lab, please review the following videos:
 ### Terraform Modules
 
 1. [Terraform Modules](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch04.html)
-1. [Terraform Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
 1. [Terraform Creating Modules](https://developer.hashicorp.com/terraform/language/modules/develop)
-1. [Terraform Custom Conditions](https://developer.hashicorp.com/terraform/language/expressions/custom-conditions)
+1. [Terraform Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+1. [Terraform Module Tutorials](https://developer.hashicorp.com/terraform/tutorials/modules)
 1. [Terraform Deploying Multi-tiered Web Application in AWS](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s1/)
     1. [Root Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s2/)
     1. [Database Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s3/)
 
+### Terraform Compound Data and Loops
+
+1. [Manage Similar Resources with `for each`](https://developer.hashicorp.com/terraform/tutorials/configuration-language/for-each)
+1. [Mange Similar Resources with `count`](https://developer.hashicorp.com/terraform/tutorials/configuration-language/count)
+1. [Terraform For Loop – Expression Overview with Examples](https://spacelift.io/blog/terraform-for-loop)
+1. [Terraform Count vs. For Each Meta-Argument – When to Use It](https://spacelift.io/blog/terraform-count-for-each)
+1. [Terraform Validate Modules with Custom Conditions](https://developer.hashicorp.com/terraform/tutorials/configuration-language/custom-conditions)
+1. [Terraform Custom Conditions](https://developer.hashicorp.com/terraform/language/expressions/custom-conditions)
+
+
+## Week 10
 ### Ansible Roles
 
 1. [Ansible Up and Running: CH09 Roles](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch09.html)
