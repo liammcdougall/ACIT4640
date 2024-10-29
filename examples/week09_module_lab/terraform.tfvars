@@ -1,0 +1,7 @@
+aws_region = "us-west-2"
+project_name = "mod_demo"
+subnet_cidr = "172.16.1.0/24"
+home_net = "75.157.0.0/16"
+bcit_net = "142.232.0.0/16"
+ami_id = "ami-03839f1dba75bb628"
+ssh_key_name = "acit_4640_202330"

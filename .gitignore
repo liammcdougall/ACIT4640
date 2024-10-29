@@ -6,3 +6,5 @@ garage/
 .terraform.*
 *.tfstate*
 *.pem*
+scratch/
+*Zone.Identifier
