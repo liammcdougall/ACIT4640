@@ -47,7 +47,7 @@ In preparation for the lab, please review the following videos:
 1. [Initializing the Working Directory](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_04/)
 1. [Validating Terraform Code](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_05/)
 1. [Viewing the Terraform Plan](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_06/)
-1. [Appplying the Infrastrucure](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_07/)
+1. [Applying the Infrastructure](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_07/)
 1. [Terraform State File](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_08/)
 1. [Destroying the Infrastructure](https://learning.oreilly.com/videos/essential-terraform-in/9780138312244/9780138312244-ETA1_01_02_08/)
 1. [Terraform Variables: Deploying a Configurable Web Server](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch02.html#idm46165915172384)
@@ -124,9 +124,9 @@ In preparation for the lab, please review the following videos:
 ### Terraform Modules
 
 1. [Terraform Modules](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch04.html)
-
 1. [Terraform Creating Modules](https://developer.hashicorp.com/terraform/language/modules/develop)
 1. [Terraform Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+1. [Terraform Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
 1. [Terraform Module Tutorials](https://developer.hashicorp.com/terraform/tutorials/modules)
 1. [Terraform Deploying Multi-tiered Web Application in AWS](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s1/)
     1. [Root Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s2/)
@@ -134,15 +134,18 @@ In preparation for the lab, please review the following videos:
 
 ### Terraform Compound Data and Loops
 
+1. [Terraform Variables: Examples and Best Practices](https://spacelift.io/blog/how-to-use-terraform-variables)
+1. [Terraform Map Variable – What It is & How to Use](https://spacelift.io/blog/terraform-map-variable)
+1. [Terraform Tips and Tricks: Loops, If-Statements, Deployment, and Gotchas](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch05.html)
 1. [Manage Similar Resources with `for each`](https://developer.hashicorp.com/terraform/tutorials/configuration-language/for-each)
 1. [Mange Similar Resources with `count`](https://developer.hashicorp.com/terraform/tutorials/configuration-language/count)
 1. [Terraform For Loop – Expression Overview with Examples](https://spacelift.io/blog/terraform-for-loop)
 1. [Terraform Count vs. For Each Meta-Argument – When to Use It](https://spacelift.io/blog/terraform-count-for-each)
-1. [Terraform Validate Modules with Custom Conditions](https://developer.hashicorp.com/terraform/tutorials/configuration-language/custom-conditions)
-1. [Terraform Custom Conditions](https://developer.hashicorp.com/terraform/language/expressions/custom-conditions)
-
+1. [Terraform Map Variable](https://spacelift.io/blog/terraform-map-variable)
+1. [Terraform File Paths](https://spacelift.io/blog/terraform-path)
 
 ## Week 10
+
 ### Ansible Roles
 
 1. [Ansible Up and Running: CH09 Roles](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch09.html)
