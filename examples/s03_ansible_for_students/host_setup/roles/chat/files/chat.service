@@ -1,0 +1,12 @@
+[Unit]
+Description=simple ncat chat server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/ncat -l --chat -k 9000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

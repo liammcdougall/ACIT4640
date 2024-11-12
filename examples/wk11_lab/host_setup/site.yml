@@ -1,0 +1,16 @@
+---
+# Playbook Deploys Example App to AWS EC2 Intances be and web
+- name: Apply common configuration to all nodes
+  hosts: all
+  roles:
+   - generic
+  tags:
+   - common
+
+- name: Setup chat app 
+  hosts: chat_server 
+  roles:
+    - chat
+  tags:
+   - chat
+

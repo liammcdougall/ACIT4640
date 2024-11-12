@@ -9,6 +9,8 @@
 1. [Week 5](notes/w05_ansible.md)
 1. [Week 7](notes/w07_ansible_tags_conditionals_handlers.md)
 1. [Week 9](notes/wk09_terraform_modules.md)
+1. [Week 9](notes/wk09_terraform_modules.md)
+1. [Week 11](notes/wk11_ansible_roles.md)
 
 ## Flipped Learning
 
