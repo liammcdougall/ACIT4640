@@ -18,3 +18,5 @@ Flipped learning resources are listed in [Flipped Learning Index](notes/flipped_
 
 ## [Resources](notes/resources.md)
 
+## [Lab Solutions](https://gitlab.com/acit_4640_library/lab_solutions)
+
