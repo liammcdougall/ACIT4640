@@ -75,51 +75,57 @@ In preparation for the lab, please review the following videos:
 1. [Ch 1. Introduction, Ansible Up and Running 3rd](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch01.html)
 1. [Ch 3. Playbooks: A beginning, Ansible Up and Running 3rd](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch03.html)
 
-
 ## Week 05
 
 ### Ansible: Inventory, Facts, and Variables
+
 1. [Ch 4 Ansible Inventory Ansible: Up and Running](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch04.html)
 1. Ansible working with Variables
-  1. [Intro](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_00/)
-  1. [Separating Code from Site Specific Configuration](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_01/)
-  1. [Using Variables in a playbook](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
-  1. [Understanding where to define your variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
-  1. [Using Ansible Facts](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
-  1. [Using `set_fact`](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_05/)
-  1. [Understanding Different Notations for Facts and Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_06/)
-  1. [Using Multi-valued Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_07/)
-  1. [Using Magic Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_08/)
-  1. [Using Register](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_09/)
+1. [Intro](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_00/)
+1. [Separating Code from Site Specific Configuration](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_01/)
+1. [Using Variables in a playbook](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
+1. [Understanding where to define your variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
+1. [Using Ansible Facts](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_02/)
+1. [Using `set_fact`](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_05/)
+1. [Understanding Different Notations for Facts and Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_06/)
+1. [Using Multi-valued Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_07/)
+1. [Using Magic Variables](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_08/)
+1. [Using Register](https://learning.oreilly.com/videos/ansible-core-concepts/9780135391662/9780135391662-ANS1_02_06_09/)
 1. [Ch 5 Vanriables and Facts: Ansible: Up and Running](https://learning.oreilly.com/library/view/ansible-up-and/9781098109141/ch05.html)
 
 ## Week 06
 
 ### Redhat CentOS 9 Stream References
+
 1. [CentOS 9 Stream AMI Images](https://www.centos.org/download/aws-images/)
 1. [Redhat Setting up and configuring NGINX](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/deploying_web_servers_and_reverse_proxies/setting-up-and-configuring-nginx_deploying-web-servers-and-reverse-proxies)
 
 ### Ansible Variables and Variable Files
+
 1. [Ansible Variables](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
 1. [Ansible `include_vars` Module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/include_vars_module.html)
 1. [Load Variable files based on Ansible Facts](https://kirito174.medium.com/load-var-files-based-on-ansible-facts-bed963999332)
-1. [Ansible Facts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html): note `INJECT_FACTS_AS_VARS` setting is turned off for this lab.
-1. [Ansible inject variables as facts](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#inject-facts-as-vars) - turn to `false` so always access via `ansible_facts` dictionary.
+1. [Ansible Facts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html):
+   note `INJECT_FACTS_AS_VARS` setting is turned off for this lab.
+1. [Ansible inject variables as facts](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#inject-facts-as-vars) -
+   turn to `false` so always access via `ansible_facts` dictionary.
 
 ### Selecting Hosts for Ansible Plays
+
 1. [Ansible Host Selection Patterns](https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html)
 1. [Ansible Conditionals](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html)
 
 ### Controlling the Running of Ansible Tasks and Plays
+
 1. [Ansible Tags](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html)
 1. [Ansible Loops](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html)
 1. [Ansible Handlers](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html)
 
 ### Grouping Ansible Tasks
+
 1. [Ansible Blocks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html)
 
-
-## Week 07/08 
+## Week 07/08
 
 ### Terraform Modules
 
@@ -129,8 +135,8 @@ In preparation for the lab, please review the following videos:
 1. [Terraform Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
 1. [Terraform Module Tutorials](https://developer.hashicorp.com/terraform/tutorials/modules)
 1. [Terraform Deploying Multi-tiered Web Application in AWS](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s1/)
-    1. [Root Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s2/)
-    1. [Database Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s3/)
+   1. [Root Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s2/)
+   1. [Database Module](https://learning.oreilly.com/videos/terraform-in-action/9781617296895VE/9781617296895VE-TFIAc4s3/)
 
 ### Terraform Compound Data and Loops
 
@@ -153,3 +159,27 @@ In preparation for the lab, please review the following videos:
 1. [Roles — Ansible Documentation](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
 1. [How to use Ansible Galaxy](https://www.redhat.com/sysadmin/ansible-galaxy-intro)
 1. [Ansible Galaxy](https://galaxy.ansible.com/)
+
+## Week 12
+
+### Terraform State Backend
+
+#### Tutorial
+
+1. [Tutorial Configuring Terraform backend with AWS S3 and DynamoDB state locking](https://dev.to/bhusein/configuring-terraform-backend-with-aws-s3-and-dynamodb-state-locking-96l)
+
+#### References
+1. [Terraform Up and Running CH3: Terraform State](https://learning.oreilly.com/library/view/terraform-up-and/9781098116736/ch03.html) Up to but not including "State File Isolation"
+1. [Terraform State Backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration)
+1. [Terraform State Backend: Local](https://developer.hashicorp.com/terraform/language/settings/backends/local)
+1. [Terraform State Backend: S3](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
+1. [Terraform State Cheatsheet](/attachments/terraform_state_cheat-sheet.pdf)
+1. [Terraform S3 Bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
+1. [Terraform DynamoDB Table](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table)
+
+### Activity
+
+1. Write a setup terraform module that will:
+
+   - create an s3 bucket and use as backend
+   - create dynamodb table and use as lock table
