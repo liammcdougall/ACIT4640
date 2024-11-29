@@ -1,5 +1,39 @@
 
 ## Using a remote backend
+verifying the s3 bucket
+
+```bash
+aws s3 ls
+aws s3 ls s3://${bucket_name} --recursive
+```
+get remote tfstate file
+
+```bash
+aws s3api get-object --bucket ${bucket_name} --key terraform.tfstate ${output_file}
+```
+remove all files from bucket
+````bash
+aws s3api delete-objects     --bucket ${bucket_name} --delete "$(aws s3api list-object-versions \
+    --bucket ${bucket_name} \
+    --output=json \
+    --query='{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
+```
+  
+```bash
+aws s3 rm s3://${bucket_name} --recursive
+``` 
+delete the bucket
+
+```bash
+aws s3 rb s3://${bucket_name} --force
+```
+verifying the dyanmoDB table
+
+```bash
+aws dynamodb list-tables
+aws dynamodb scan --table-name ${table_name}
+```
+
 ## GitOps
 
 GitOps is a little like DevOps in that isn't a tool or framework that you can add to your projects.

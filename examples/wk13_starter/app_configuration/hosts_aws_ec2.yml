@@ -3,6 +3,10 @@ plugin: amazon.aws.aws_ec2
 regions:
   - us-west-2
 
+filters:
+  tag:Project: "acit4640_lab13"
+  instance-state-name: running
+
 # Set individual Variables
 compose:
   # Configure ansible access to EC2 instances to use public DNS name
@@ -24,6 +28,6 @@ keyed_groups:
 
   # Create a group for each Server-Role
   # This matches the tag Server_Role set using Terraform
-  - key: tags.Server_Role
+  - key: tags.Role
     prefix: "role"
     separator: "_"

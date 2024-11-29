@@ -1,6 +1,6 @@
 ---
 - name: bring up hosts
-  hosts: project_lab13
+  hosts: project_acit4640_lab13
   gather_facts: false
   tasks:
     - name: wait for hosts to be available
@@ -13,25 +13,25 @@
     - initial
 
 - name: common setup
-  hosts: project_lab13
+  hosts: project_acit4640_lab13
   tasks:
     - name: run ec2_host_base role
       ansible.builtin.include_role:
         name: ec2_host_base
       vars:
-        project_group: project_lab13
+        project_group: project_acit4640_lab13
   tags:
     - initial
 
 # Create role frontend_host
 - name: setup frontend
-  hosts: role_web:&project_lab13
+  hosts: role_web:&project_acit4640_lab13
   tasks:
     - name: run frontend_host role
       ansible.builtin.include_role:
         name: frontend_host
       vars:
-        project_group: project_lab13
+        project_group: project_acit4640_lab13
   tags:
     - frontend
 
