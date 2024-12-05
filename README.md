@@ -11,6 +11,7 @@
 1. [Week 9](notes/wk09_terraform_modules.md)
 1. [Week 9](notes/wk09_terraform_modules.md)
 1. [Week 11](notes/wk11_ansible_roles.md)
+1. [Week 14 Bonus: Packer](notes/intro-packer.md)
 
 ## Flipped Learning
 
