@@ -1,18 +1,19 @@
 
-## Using a remote backend
-verifying the s3 bucket
+# Verifying a Terraform S3/DynamoDB remote backend using AWS CLI 
+## Verifying the s3 bucket
 
 ```bash
 aws s3 ls
 aws s3 ls s3://${bucket_name} --recursive
 ```
-get remote tfstate file
+## get remote `tfstate` file
 
 ```bash
 aws s3api get-object --bucket ${bucket_name} --key terraform.tfstate ${output_file}
 ```
-remove all files from bucket
-````bash
+## Remove all files from bucket
+
+```bash
 aws s3api delete-objects     --bucket ${bucket_name} --delete "$(aws s3api list-object-versions \
     --bucket ${bucket_name} \
     --output=json \
@@ -22,12 +23,13 @@ aws s3api delete-objects     --bucket ${bucket_name} --delete "$(aws s3api list-
 ```bash
 aws s3 rm s3://${bucket_name} --recursive
 ``` 
-delete the bucket
+## Delete the bucket
 
 ```bash
 aws s3 rb s3://${bucket_name} --force
 ```
-verifying the dyanmoDB table
+
+## Verify the DyanmoDB table
 
 ```bash
 aws dynamodb list-tables
