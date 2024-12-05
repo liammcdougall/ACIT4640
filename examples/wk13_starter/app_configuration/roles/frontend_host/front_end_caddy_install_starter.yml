@@ -1,0 +1,40 @@
+- name: install caddy requirements
+  ansible.builtin.package:
+    name: "{{ item }}" 
+    state: latest
+    update_cache: true
+  loop:
+    - debian-keyring
+    - debian-archive-keyring 
+    - apt-transport-https 
+    - curl
+  become: true
+
+- name: get caddy keyring and repo info
+  ansible.builtin.get_url: 
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    mode: u=rwx,g=rwx,o=rwx
+  loop:
+    - url: https://dl.cloudsmith.io/public/caddy/stable/gpg.key 
+      dest: /tmp/caddy_gpg.key
+    - url: https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt 
+      dest: /tmp/caddy_debian.deb.txt
+  become: true
+
+- name: install caddy keyring and repo listing
+  ansible.builtin.shell: |
+    cat /tmp/caddy_gpg.key | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+    cat /tmp/caddy_debian.deb.txt | tee /etc/apt/sources.list.d/caddy-stable.list
+  args:
+    creates: /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+  become: true
+
+- name: install caddy package
+  ansible.builtin.package:
+    name: "{{ item }}" 
+    state: latest
+    update_cache: true
+  loop:
+    - caddy
+  become: true
