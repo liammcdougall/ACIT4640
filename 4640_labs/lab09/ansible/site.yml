@@ -1,0 +1,47 @@
+- name: setup troubleshooting tools
+  hosts: project_acit4640_t02_q03:&group_admin
+  tags: admin
+  roles:
+    - install-network-tools
+  become: true
+  # tasks:
+  #   - name: install network tools
+  #     ansible.builtin.package:
+  #       name: nmap
+  #       state: latest
+  #       update_cache: yes
+
+- name: setup nginx static web site
+  hosts: project_acit4640_t02_q03:&server_role_web
+  become: true
+  tags: web
+  roles:
+    - setup-webserver-nginx
+  # tasks:
+  #   - name: Install nginx
+  #     ansible.builtin.package:
+  #       name: nginx
+  #       state: latest
+  #   - name: get aws ec2 instance facts
+  #     amazon.aws.ec2_metadata_facts:
+  #   - name: create index.html
+  #     ansible.builtin.template:
+  #       src: index.html.j2
+  #       dest: /var/www/html/index.html
+  #   - name: create nginx configuration
+  #     ansible.builtin.copy:
+  #       src: default.conf
+  #       dest: /etc/nginx/sites-available/default
+  #     notify: restart_nginx
+  #   - name: enable nginx configuration
+  #     ansible.builtin.file:
+  #       src: /etc/nginx/sites-available/default
+  #       dest: /etc/nginx/sites-enabled/default
+  #       state: link
+  #     notify: restart_nginx
+  # handlers:
+  #   - name: restart_nginx
+  #     ansible.builtin.service:
+  #       name: nginx
+  #       state: restarted
+  #       enabled: true

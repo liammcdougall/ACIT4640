@@ -1,0 +1,29 @@
+- name: Installs the nmap package on all the EC2 instances tagged with the group value admin and the project tag acit4640_t02_q03
+  become: true
+  hosts: Project_acit4640_t02_q03:&Group_admin
+  tasks:
+    - name: Install nmap
+      ansible.builtin.package:
+        name: nmap
+        state: present
+        update_cache: true
+
+- name: Configure all the EC2 instances tagged with the group value web and the project tag acit4640_t02_q03
+  become: true
+  hosts: Project_acit4640_t02_q03:&Server_Role_web
+  tasks:
+    - name: install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: latest
+    - name: Gather EC2 facts
+      amazon.aws.ec2_metadata_facts:
+    - name: Generate index.html
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: "/var/www/html/index.html"
+    - name: Config nginx
+      ansible.builtin.template:
+        src: file/default.conf
+        dest: "{{ nginx_config_path }}"
+      notify: restart nginx

@@ -1,0 +1,6 @@
+packages:
+  - curl
+  - nc
+  - bind-utils
+  - tcpdump
+  - nmap

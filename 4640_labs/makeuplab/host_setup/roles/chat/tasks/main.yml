@@ -1,0 +1,28 @@
+---
+- name: Ensure systemd directory exists
+  become: true
+  ansible.builtin.file:
+    path: /etc/systemd/system/
+    state: directory
+    mode: '0755'
+
+- name: Copy chat.service file to system direcotry
+  become: true
+  ansible.builtin.copy:
+    src: files/chat.service
+    dest: etc/systemd/system/chat.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload system daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+  notify: Restart chat service
+
+- name: Enable and start chat.service
+  become: true
+  systemd:
+    name: chat.service
+    enabled: true
+    state: started

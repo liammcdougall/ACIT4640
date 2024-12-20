@@ -1,0 +1,56 @@
+---
+# - name: Debug task to inspect host variables
+#   hosts: all
+#   tasks:
+#     - name: Print all variables for the host
+#       ansible.builtin.debug:
+#         var: hostvars[inventory_hostname]
+
+
+
+- name: Configure web servers as reverse proxies
+  hosts: Server_Role_web
+  tasks:
+    - name: Create proxy configuration using template
+      ansible.builtin.template:
+        src: templates/proxy.conf.j2
+        dest: /etc/nginx/sites-available/default
+        mode: '0644'
+      notify: Restart Nginx
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+- name: Configure backend to serve static website
+  hosts: Server_Role_backend
+  become: true
+  tasks:
+    - name: Ensure Nginx is installed
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Ensure /etc/nginx/sites-available exists
+      ansible.builtin.file:
+        path: /etc/nginx/sites-available
+        state: directory
+        mode: '0755'
+
+    - name: Create public configuration
+      ansible.builtin.copy:
+        src: files/public.conf
+        dest: /etc/nginx/sites-available/default
+        mode: '0644'
+      notify: Restart Nginx
+
+    - name: Create index.html using template
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html
+        mode: '0644'
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted

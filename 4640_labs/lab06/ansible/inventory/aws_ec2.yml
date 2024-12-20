@@ -1,0 +1,30 @@
+---
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-west-2
+filters:
+  instance-state-name: running
+
+compose:
+  ansible_host: public_dns_name
+hostnames:
+  - name: tag:Name
+    separator: ""
+    prefix: ""
+keyed_groups:
+  # Create a group for each Name Tag (alternative to setting the hostname above)
+  - key: tags.Name
+    prefix: "Name"
+    separator: "_"
+
+  # Create group for each separate Project Tag
+  - key: tags.Project
+    prefix: "Project"
+    separator: "_"
+
+  # Create a group for each separate Role Tag
+  - key: tags.Role
+    prefix: "Server_Role"
+    separator: "_"
+
+...

@@ -1,0 +1,27 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Upload HTML document
+      copy:
+        src: ./files/index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Upload Nginx configuration
+      copy:
+        src: ./files/nginx.conf
+        dest: /etc/nginx/sites-available/default
+        mode: '0644'
+
+    - name: Restart Nginx
+      systemd:
+        name: nginx
+        state: restarted
+        enabled: yes

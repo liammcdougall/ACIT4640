@@ -1,0 +1,11 @@
+# Terraform Input  Variables
+aws_region = "us-west-2"
+availability_zone = "us-west-2a"
+project_name = "acit_4640_lab_11"
+vpc_cidr = "192.168.0.0/16"
+subnet_cidr = "192.168.1.0/24"
+default_route = "0.0.0.0/0"
+home_net = "75.157.0.0/16"
+bcit_net = "142.232.0.0/16"
+ami_id = "ami-0058f736afded77b3"
+ssh_key_name = "acit_4640_lab_11"

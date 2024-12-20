@@ -1,0 +1,28 @@
+
+Steps for setting up a minimal web server with Ansible:
+1. Set up the wk5 directory structure.
+   - mkdir -p ~/wk5 && cd ~/wk5
+
+2. Create SSH key pair and infrastructure.
+   - aws ec2 create-key-pair --key-name ansible-key --query 'KeyMaterial' --output text > ansible-key.pem
+   - chmod 400 ansible-key.pem
+   - terraform init
+   - terraform apply
+
+3. Install Ansible and verify:
+   - sudo apt update && sudo apt install -y ansible
+   - ansible --version
+
+4. Create an HTML document with an H1 tag.
+
+5. Create Ansible inventory file with web and backend servers.
+
+6. Set up minimal Nginx configuration to serve HTML.
+
+7. Write Ansible playbook to configure web server, upload files, and start service.
+
+8. Run the Ansible playbook:
+   - ansible-playbook -i inventory.ini deploy_web.yaml
+
+9. Verify setup in a web browser.
+

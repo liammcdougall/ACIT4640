@@ -1,0 +1,7 @@
+---
+# handlers file for setup--webserver-nginx
+- name: restart_nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+    enabled: true

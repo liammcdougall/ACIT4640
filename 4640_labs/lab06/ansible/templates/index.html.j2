@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Instance</title>
+</head>
+<body>
+    <h1>Ansible Groups: {{ group_names }}</h1>
+    <p>Ansible Hostname: {{ ansible_hostname }}</p>
+    <p>EC2 Hostname: {{ ansible_facts.ec2_public_hostname }}</p>
+    <p>Private IP: {{ ansible_facts.default_ipv4.address }}</p>
+    <p>Public IP: {{ ansible_facts.ec2_public_ipv4 }}</p>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# wk5/inventory.ini
+[web]
+web_w1 ansible_host=34.219.165.181 ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/liam/4640/lab05/wk5/acit_4640_lab05_key.pem
+[backend]
+backend_b1 ansible_host=34.214.180.83 ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/liam/4640/lab05/wk5/acit_4640_lab05_key.pem

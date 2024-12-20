@@ -1,0 +1,19 @@
+1. Created an SSH key using AWS CLI:
+   
+   chmod 400 my-key.pem
+
+2. Provisioned infrastructure using Terraform:
+   terraform init
+   terraform apply
+
+3. Created an HTML document (index.html) that says "Hello Liam!!".
+
+4. Installed Ansible:
+   ansible --version #this was to verify installation
+
+5. Created Ansible inventory and playbook for Nginx:
+   - hosts.ini
+   - nginx-playbook.yml
+
+6. Applied the playbook to the 'web_w1' instance:
+   ansible-playbook -i hosts.ini nginx-playbook.yml

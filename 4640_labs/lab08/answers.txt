@@ -1,0 +1,5 @@
+How is data passed into a module?
+    by using input variables within the module block
+How is data passed out of a module?
+    from within the actual module, you can return specific info back into the main configuration
+    

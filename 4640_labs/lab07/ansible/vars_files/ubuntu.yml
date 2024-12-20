@@ -1,0 +1,6 @@
+packages:
+  - curl
+  - netcat
+  - dnsutils
+  - tcpdump
+  - nmap

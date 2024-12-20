@@ -1,0 +1,16 @@
+---
+# tasks file for generic
+- name: Update the APT cache
+  become: true
+  ansible.builtin.package:
+    update_cache: true
+
+- name: Install req packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - bind9-dnsutils
+      - tcpdump
+      - nmap
+      - ncat
+    state: present

@@ -1,0 +1,101 @@
+---
+- name: Gather facts from all nodes
+  hosts: Project_wk07_lab
+  tasks:
+    - name: Gather EC2 facts
+      amazon.aws.ec2_metadata_facts:
+
+    - name: Gather setup facts
+      ansible.builtin.setup:
+
+- name: Install troubleshooting tools on all nodes in Project_wk07_lab
+  hosts: Project_wk07_lab
+  tags: initial
+  tasks:
+    - name: Load OS specific package names
+      ansible.builtin.include_vars:
+        file: "vars_files/{{ ansible_facts.distribution | lower }}.yml"
+
+    - name: Install troubleshooting tools
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ troubleshooting_tools }}"
+      when: troubleshooting_tools is defined
+
+- name: Configure reverse proxy servers
+  hosts: 
+    - 'Server_Role_fe'
+    - 'Project_wk07_lab'
+  become: true
+  tags: frontend
+
+  vars:
+    backend_ip: "{{ hostvars['be_01'].ansible_facts.default_ipv4.address }}"
+    nginx_config_path: >-
+      {%- if ansible_facts.distribution | lower == 'centos' %}
+        /etc/nginx/conf.d/
+      {%- elif ansible_facts.distribution | lower == 'ubuntu' %}
+        /etc/nginx/sites-available/
+      {%- else %}
+        /etc/nginx/conf.d/  # Default for other OS
+      {%- endif %}
+
+  tasks:
+    - name: Ensure Nginx configuration directory exists (CentOS)
+      file:
+        path: /etc/nginx/conf.d
+        state: directory
+      when: ansible_facts.distribution | lower == 'centos'
+
+    - name: Ensure Nginx configuration directory exists (Ubuntu)
+      file:
+        path: /etc/nginx/sites-available
+        state: directory
+      when: ansible_facts.distribution | lower == 'ubuntu'
+
+    - name: Configure SELinux to allow forwarding (CentOS)
+      ansible.posix.seboolean:
+        name: httpd_can_network_relay
+        persistent: yes
+        state: true
+      when: ansible_facts.distribution | lower == 'centos'
+
+    - name: Generate Nginx configuration
+      ansible.builtin.template:
+        src: templates/nginx.conf.j2
+        dest: "{{ nginx_config_path }}"
+      notify: restart nginx
+
+  handlers:
+    - name: restart nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+      when: ansible_facts.distribution in ['centos', 'ubuntu']
+
+- name: Configure static website on be_01
+  hosts: be_01
+  tags: backend
+  become: true
+  tasks:
+    - name: Ensure the /var/www/html directory exists
+      ansible.builtin.file:
+        path: /var/www/html
+        state: directory
+    - name: Copy Nginx configuration file
+      ansible.builtin.copy:
+        src: templates/nginx.conf.j2
+        dest: "{{ nginx_config_path }}"
+      when: ansible_facts.distribution in ['ubuntu', 'centos']  # Adjust as necessary
+
+    - name: Generate index.html
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: "/var/www/html/index.html"
+      # vars:
+      #   inventory_hostname: "{{ inventory_hostname }}"
+      #   group_names: "{{ group_names }}"
+      #   public_dns: "{{ ansible_facts.ec2_public_hostname | default('N/A') }}"
+      #   private_ip: "{{ ansible_facts.default_ipv4.address }}"
+      #   public_ip: "{{ ansible_facts.ec2_public_ipv4 | default('N/A') }}"

@@ -1,0 +1,23 @@
+---
+# tasks file for setup--webserver-nginx
+- name: install nginx
+  ansible.builtin.package:
+    name: nginx
+    state: latest
+- name: get aws ec2 instance facts
+  amazon.aws.ec2_metadata_facts:
+- name: create index.html
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+- name: create nginx configuration
+  ansible.builtin.copy:
+    src: default.conf
+    dest: /etc/nginx/sites-available/default
+  notify: restart_nginx
+- name: enable nginx configuration
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
+    state: link
+  notify: restart_nginx

@@ -1,0 +1,5 @@
+---
+- name: Restart chat service
+  ansible.builtin.systemd:
+    name: chat.service
+    state: restarted
